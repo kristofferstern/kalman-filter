@@ -1,9 +1,11 @@
 import abc
+from PhysicalPhenomena.IPhysicalPhenomenon import IPhysicalPhenomenon
 
 class Device(metaclass=abc.ABCMeta):
-    def __init__(self) -> None:
+    def __init__(self, phenomenon: IPhysicalPhenomenon) -> None:
         self.time = 0
         self.state = 0
+        self.phenomenon = phenomenon
 
 
     @abc.abstractmethod
@@ -18,6 +20,7 @@ class Device(metaclass=abc.ABCMeta):
 
     def UpdateState(self, time: float):
         self.time = time
+        self.phenomenon.UpdateState(time)
         self.state = self.update(time)
 
 

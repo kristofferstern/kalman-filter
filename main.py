@@ -2,28 +2,32 @@ import numpy as np
 import matplotlib.pyplot as plt
 import Device.GaussianDevice as gd
 import Filter.filter1D as f1d
-# from GaussianDevice import GaussianDevice
-# from filter1D import SimpleFilter1D
+import PhysicalPhenomena.sinus_distance as sd
 
 import importlib
 importlib.reload(gd)
 importlib.reload(f1d)
 
-total_time = 400
+total_time = 400    #[s]
 time_res = 0.1
-base_dist = 0
-amplitude = 2
-noise_std = 0.1
+base_dist = 0    # [m]
+amplitude = 2    # [m]
+noise_std = 0
+zero_vel = 0.1       # [m/s]
 
-device = gd.GaussianDevice(base_dist, amplitude, noise_std)
+phenomenon = sd.SinusDistance(base_dist, amplitude, zero_vel)
+device = gd.GaussianDevice(noise_std, phenomenon)
+
 filter = f1d.SimpleFilter1D(
     delay = 0,
     min_length = 0.02,
     in_points = False,
-    order = 2,
+    order = 1,
     length = 15)
 
 time = np.linspace(0, total_time, int(total_time*(1/time_res))) 
+time_res = time[1] - time[0]
+
 pos = np.zeros(time.size)
 bob = np.zeros(time.size)
 for i in range(time.size):
