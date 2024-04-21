@@ -29,7 +29,7 @@ time = np.linspace(0, total_time, int(total_time*(1/time_res)))
 time_res = time[1] - time[0]
 
 pos = np.zeros(time.size)
-bob = np.zeros(time.size)
+pos_est = np.zeros(time.size)
 for i in range(time.size):
     device.UpdateState(time[i])
     pos[i] = device.getMeasurement()
@@ -37,10 +37,10 @@ for i in range(time.size):
         filter.AddMeasurement(0, pos[i])
     else:
         filter.AddMeasurement(time_res, pos[i])
-    john = filter.GetFitResult(0)
-    if john is not None:
-        bob[i] = john[0]
+    est = filter.GetFitResult(0)
+    if est is not None:
+        pos_est[i] = est[0]
 
 plt.plot(time, pos)
-plt.plot(time, bob)
+plt.plot(time, pos_est)
 plt.show()

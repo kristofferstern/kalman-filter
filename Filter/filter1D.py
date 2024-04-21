@@ -97,7 +97,7 @@ class FadingMemoryFilter1D:
         K = (np.matmul(P_1, np.transpose(C))) * (1.0/(P_1[0,0] + R))
 
         #### Update state estimate
-        self.__state_estimate = x_1 - K * (measurement - x_1[0,0])
+        self.__state_estimate = x_1 + K * (measurement - x_1[0,0])
 
         #### Update uncertainty estimate 
         self.__state_covariance_estimate = P_1 - np.matmul(K, np.transpose(K)) * (P_1[0,0] + R)
@@ -169,9 +169,6 @@ class SimpleFilter1D(IFilter):
         valid = state is not None
         
         if self.__requirements_in_points:
-            bob = self.__cummulative_points
-            john = self.__min_points
-            cake = self.__input_times
             valid = valid and self.__cummulative_points >= self.__min_points and len(self.__input_times) >= self.__min_points
         else:
             if len(self.__input_times) == 0:
