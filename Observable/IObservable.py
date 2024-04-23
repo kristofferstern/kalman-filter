@@ -25,3 +25,7 @@ class IObservable(metaclass=abc.ABCMeta):
     def getMeasurableState(self) -> float:
         value = self.realize()
         return value
+    
+
+    def getState(self) -> np.array:
+        return self.state

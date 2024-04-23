@@ -1,5 +1,4 @@
 import numpy as np
-from Sensor.ISensor import ISensor
 from Observable.IObservable import IObservable
 
 class SinusDistance(IObservable):
@@ -19,4 +18,6 @@ class SinusDistance(IObservable):
 
 
     def realize(self) -> float:
+        #### Return the observable state of the distanse observable
+        #### Here it is only distance (not higher orders)
         return self.state[0]
