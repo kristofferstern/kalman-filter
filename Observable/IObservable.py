@@ -1,7 +1,7 @@
 import abc
 import numpy as np
 
-class IPhysicalPhenomenon(metaclass=abc.ABCMeta):
+class IObservable(metaclass=abc.ABCMeta):
     def __init__(self) -> None:
         self.time = 0
         self.state = np.array([])

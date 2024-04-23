@@ -1,11 +1,11 @@
 import numpy as np
 import matplotlib.pyplot as plt
-import Device.GaussianDevice as gd
+import Sensor.gaussian_sensor as gs
 import Filter.filter1D as f1d
-import PhysicalPhenomena.sinus_distance as sd
+import Observable.sinus_distance as sin_dist
 
 import importlib
-importlib.reload(gd)
+importlib.reload(gs)
 importlib.reload(f1d)
 
 total_time = 400    #[s]
@@ -15,8 +15,8 @@ amplitude = 2    # [m]
 noise_std = 0
 zero_vel = 0.1       # [m/s]
 
-phenomenon = sd.SinusDistance(base_dist, amplitude, zero_vel)
-device = gd.GaussianDevice(noise_std, phenomenon)
+phenomenon = sin_dist.SinusDistance(base_dist, amplitude, zero_vel)
+device = gs.GaussianSensor(noise_std, phenomenon)
 
 filter = f1d.SimpleFilter1D(
     delay = 0,

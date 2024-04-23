@@ -1,8 +1,8 @@
 import abc
-from PhysicalPhenomena.IPhysicalPhenomenon import IPhysicalPhenomenon
+from Observable.IObservable import IObservable
 
-class Device(metaclass=abc.ABCMeta):
-    def __init__(self, phenomenon: IPhysicalPhenomenon) -> None:
+class ISensor(metaclass=abc.ABCMeta):
+    def __init__(self, phenomenon: IObservable) -> None:
         self.time = 0
         self.state = 0
         self.phenomenon = phenomenon

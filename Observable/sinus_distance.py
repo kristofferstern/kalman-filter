@@ -1,8 +1,8 @@
 import numpy as np
-from Device.device import Device
-from PhysicalPhenomena.IPhysicalPhenomenon import IPhysicalPhenomenon
+from Sensor.ISensor import ISensor
+from Observable.IObservable import IObservable
 
-class SinusDistance(IPhysicalPhenomenon):
+class SinusDistance(IObservable):
     def __init__(self, base_distance: float, amplitude: float, zero_vel: float) -> float:
         super().__init__()
         self.base_distance = base_distance

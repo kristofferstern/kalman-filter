@@ -1,9 +1,9 @@
 import numpy as np
-from Device.device import Device
-from PhysicalPhenomena.IPhysicalPhenomenon import IPhysicalPhenomenon
+from Sensor.ISensor import ISensor
+from Observable.IObservable import IObservable
 
-class GaussianDevice(Device):
-    def __init__(self, noise_std:float, phenomenon: IPhysicalPhenomenon) -> float:
+class GaussianSensor(ISensor):
+    def __init__(self, noise_std:float, phenomenon: IObservable) -> float:
         super().__init__(phenomenon)
         self.noise_std = noise_std
     
