@@ -12,11 +12,11 @@ total_time = 400    #[s]
 time_res = 0.1
 base_dist = 0    # [m]
 amplitude = 2    # [m]
-noise_std = 0
+noise_std = 0.1
 zero_vel = 0.1       # [m/s]
 
-phenomenon = sin_dist.SinusDistance(base_dist, amplitude, zero_vel)
-device = gs.GaussianSensor(noise_std, phenomenon)
+observable = sin_dist.SinusDistance(base_dist, amplitude, zero_vel)
+device = gs.GaussianSensor(noise_std, observable)
 
 filter = f1d.SimpleFilter1D(
     delay = 0,
