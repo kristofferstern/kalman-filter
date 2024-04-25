@@ -8,8 +8,8 @@ class GaussianSensor(ISensor):
         self.noise_std = noise_std
     
 
-    def update(self, time: float) -> float:
-        return self.phenomenon.getMeasurableState()
+    # def update(self, time: float) -> float:
+    #     return self.phenomenon.getMeasurableState()
 
 
     def realize(self) -> float:

@@ -22,7 +22,7 @@ filter = f1d.SimpleFilter1D(
     delay = 0,
     min_length = 0.02,
     in_points = False,
-    order = 1,
+    order = 2,
     length = 15)
 
 time = np.linspace(0, total_time, int(total_time*(1/time_res))) 

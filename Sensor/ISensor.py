@@ -13,15 +13,16 @@ class ISensor(metaclass=abc.ABCMeta):
         pass
 
 
-    @abc.abstractmethod
-    def update(self, time: float):
-        pass
+    # @abc.abstractmethod
+    # def update(self, time: float):
+    #     pass
 
 
     def UpdateState(self, time: float):
         self.time = time
         self.phenomenon.UpdateState(time)
-        self.state = self.update(time)
+        self.state = self.phenomenon.getMeasurableState()
+        # self.state = self.update(time)
 
 
     def getMeasurement(self) -> float:
