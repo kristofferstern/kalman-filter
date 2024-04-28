@@ -12,7 +12,7 @@ class SinusDistance(IObservable):
     def update(self, time: float) -> float:
         state = np.array([
             self.amplitude * np.sin(2 * np.pi * self.x * time) + self.base_distance,
-            self.amplitude * np.pi * self.x * np.cos(2 * np.pi * self.x * time)
+            self.amplitude * 2 * np.pi * self.x * np.cos(2 * np.pi * self.x * time)
         ])
         return state
 
